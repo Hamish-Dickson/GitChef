@@ -1,8 +1,8 @@
 ﻿namespace GitChef
 {
-    public static partial class ArgumentParser
+    internal static partial class ArgumentParser
     {
-        public static string[] ParseArguments(string[] args)
+        internal static string[] ParseArguments(string[] args)
         {
             List<string> parsedArgs = new();
             foreach (string arg in args)

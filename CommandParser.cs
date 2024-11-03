@@ -1,6 +1,6 @@
 ﻿namespace GitChef
 {
-    public static class CommandBuilder
+    internal static class CommandParser
     {
         private static readonly Dictionary<string, string> CommandMap = new()
         {
@@ -23,10 +23,10 @@
             { "itsbloodyraw", "revert" },
             { "namedish", "tag" },
         };
-    
-        internal static string ChefCommandToGit(string chefArgs)
+
+        internal static bool TryParseGitChefCommand(string command, out string chefArgs)
         {
-            return CommandMap.GetValueOrDefault(chefArgs) ?? throw new InvalidOperationException($"{chefArgs} is not a valid GitChef argument.");
+            return CommandMap.TryGetValue(command, out chefArgs);
         }
     }
 }
