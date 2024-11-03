@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using GitChef.Enums;
 
-namespace GitChef;
+namespace GitChef.Logging;
 
 internal static class GitLogWrapper
 {
@@ -14,11 +14,12 @@ internal static class GitLogWrapper
         if (status is Status.Error)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("Git Error: " + eventArgs.Data);
+            Console.Write("Git Error: ");
         }
         else
         {
-            Console.Write("Git Message: " + eventArgs.Data);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("Git Message: ");
         }
         
         Console.ResetColor();

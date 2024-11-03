@@ -1,4 +1,4 @@
-﻿namespace GitChef
+﻿namespace GitChef.Parsers
 {
     internal static class CommandParser
     {

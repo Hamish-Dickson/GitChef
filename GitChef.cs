@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
-using System.Reflection;
 using GitChef.Enums;
+using GitChef.Logging;
+using GitChef.Parsers;
 
 namespace GitChef
 {
@@ -29,15 +30,8 @@ namespace GitChef
 
         private static void RunGitCommand(string gitCommand, string[] gitArgs)
         {
-            var assemblyLocation = Assembly.GetExecutingAssembly().Location;
-            var productVersion = FileVersionInfo.GetVersionInfo(assemblyLocation).ProductVersion?.Split('+')[0];
             string arguments = $"{gitCommand} {string.Join(" ", gitArgs)}";
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("GitChef v"+ productVersion + " running command: " + gitCommand);
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Yes Chef!");
-            Console.ResetColor();
-
+            ChefLogger.LogInitialisationMessage(arguments);
             
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
@@ -70,6 +64,7 @@ namespace GitChef
                 process.BeginOutputReadLine();
                 process.BeginErrorReadLine();
                 process.WaitForExit();
+                ChefLogger.LogExitMessage();
             }
             catch (Exception ex)
             {

@@ -1,6 +1,6 @@
-﻿namespace GitChef
+﻿namespace GitChef.Parsers
 {
-    internal static partial class ArgumentParser
+    internal static class ArgumentParser
     {
         internal static string[] ParseArguments(string[] args)
         {
