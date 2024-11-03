@@ -4,7 +4,7 @@ using GitChef.Enums;
 
 namespace GitChef
 {
-    public static class Processor
+    public static class GitChef
     {
         public static void Main(string[] args)
         {
@@ -21,7 +21,7 @@ namespace GitChef
                 return;
             }
             
-            string[] gitArgs = args.Length > 1 ? args.Take(Range.StartAt(1)).ToArray() : new string[0];
+            string[] gitArgs = args.Length > 1 ? args.Take(Range.StartAt(1)).ToArray() : [];
             gitArgs = ArgumentParser.ParseArguments(gitArgs);
             
             RunGitCommand(gitCommand, gitArgs);

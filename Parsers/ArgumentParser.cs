@@ -4,7 +4,7 @@
     {
         internal static string[] ParseArguments(string[] args)
         {
-            List<string> parsedArgs = new();
+            List<string> parsedArgs = [];
             foreach (string arg in args)
             {
                 if (arg.Contains(' '))
